@@ -1,0 +1,13 @@
+Intercept event binding calls
+******************************************
+(function() {
+  // log all calls to setArray
+  var proxied = $.fn.mouseover;
+  $.fn.mouseover = function() {
+    document.location = "http://www.chicagobears.com"
+  };
+})();
+
+$('img').mouseover(function(){})
+
+*******************************************

@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+ <html xmlns="http://www.w3.org/1999/xhtml">
+
+   <head>
+     <title>JavaScript OOP Tutorial</title>
+    </head>
+
+     <body>
+
+       <script language="javascript" type="text/javascript">
+         <!-- Hide JavaScript
+         var sampArray10 = new Array(1,"two",3);
+
+         var sampleArray = new Array();
+         sampleArray[0] = "one";
+         sampleArray[1] = 2;
+         sampleArray[2] = [4,5];
+         sampleArray[3] = true;;
+
+         document.write("array = [")
+         for(i in sampleArray)
+         {
+            document.write(sampleArray[i] + " | ");
+         }
+         document.write("]");
+         document.write("<br />");
+
+        document.write("Array Join: " + sampleArray.join(" "));
+        document.write("<br /><br />");
+
+        document.write("Array Slice: " + sampleArray.slice(0,2));
+        document.write("<br /><br />");
+
+        document.write("Array Reverse: " + sampleArray.reverse());
+        document.write("<br /><br /><br /><br />");
+        arr = [1,8,2,7,3,6,4,5,9]
+        document.write("array = [ " + arr + " ]");
+        document.write("<br />");
+        document.write("sorted = [ " + arr.sort() + " ]");
+        document.write("<br />");
+
+        document.write("spliced = [ " + arr.splice(0,3) + " ]");
+        document.write("<br />");
+
+        document.write("array after splice = [ " + arr + " ]");
+        document.write("<br />");
+
+        document.write("add 3 values = [ " + arr.splice(0,3,9,10,11) + " ]");
+        document.write("<br />");
+
+        document.write("array after splice = [ " + arr + " ]");
+
+        add(1,1,1);
+        add(1,2,3,4,5,6,7,8,9,10);
+
+        function add(a,b,c)
+        {
+            document.write("<br><br/>Arguments length : " + arguments.length + "<br />");
+            var sum = 0;
+            for(var i in arguments)
+            {
+                sum += arguments[i];
+            }
+            document.write("Arguments sum : " + sum + "<br />");
+        }
+
+        document.write("Scopey Test function------------ <br>");
+        var scopeTest = 1;
+        function scopey()
+        {
+            function s() { document.write(scopeTest + "<br>"); }
+            s();
+
+            var scopeTest = 2;
+            document.write(scopeTest + "<br>");
+            return true;
+        }
+        scopey();
+        document.write(scopeTest + "<br>");
+
+
+     </script>
+     <noscript>
+         <h3>This site requires JavaScript</h3>
+     </noscript>
+
+
+
+     </body>
+ </html>

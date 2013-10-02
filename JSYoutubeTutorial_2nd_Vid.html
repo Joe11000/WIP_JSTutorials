@@ -1,0 +1,158 @@
+<html>
+  <head>
+
+    <style>
+      #h3style
+      {
+        color:gray;
+      }
+
+    </style>
+
+ <!-- // <script language="JavaScript" typ="text/javascript" src="/js/jquery-1.2.6.min.js"></script> -->
+
+
+    <script  src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js"  />
+
+    <script  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" />
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+<!-- <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script> -->
+
+  </head>
+
+  <body onload="alert('Page Loaded!')">
+      <p id="timer" name="timeOnPage" >You have been on this page for 0 seconds</p>
+      <img id="image_id" onClick="alertme();" onDblClick="alert('You Double Clicked!');" src='http://chrisstephenson.typepad.com/photos/uncategorized/2007/03/31/black_box.jpg' onResize="changeImage();">
+
+      <h3 id="h3style" onMouseOver="changeColor();" onMouseOut="changeAgain();">Rollover</h3>
+
+      <p id="first">This is the 1st paragraph</p>
+      <p id="second">This is the 2nd paragraph</p>
+      <p id="third">This is the 3rd paragraph</p>
+
+      <form name="formex">
+        <input type="checkbox" name="firstpara" onClick="showPara();"> First Paragraph <br />
+        <input type="checkbox" name="secondpara" onClick="showPara();"> Second Paragraph <br />
+        <input type="checkbox" name="thirdpara" onClick="showPara();"> Third Paragraph <br />
+      </form>
+
+      <form name="formex2">
+        <p>Text input</p>
+        echo password
+        <input type="password" name="textinput" onBlur="alert('onBlur Triggered')" onChange= "shoutPassword();" onFocus="">
+      </form>
+      <br>
+      <br>
+      <form name="formex3">
+         Mouse X : <input type="text" name="mouseXfield"> <br>
+         Mouse Y : <input type="text" name="mouseYfield">
+         KeyPressed : <input type="text" name="keypressed">
+         MouseButtonPressed<input type="text" name="mousebutton">
+
+      </form>
+
+
+      resize image
+    <script >
+
+       $('#image_id').css("width", "35%");
+      window.addEventListener('resize', function(){
+        changeImage();
+      });
+
+      var timer = 0;
+      window.setInterval(function(e){
+        $('#timer')[0].innerHTML = "You have been on page for " + ++timer + " seconds";
+      }, 1000);
+
+
+      document.onmousedown = mouseClicked;
+      document.onkeypress = keyPressed;
+
+      document.onmousemove = function(e){
+        mousePos(e);
+      };
+
+      var mouseClick = 0;
+      var keyClicked = 0;
+
+      function mousePos(e)
+      {
+        document.formex3.mouseXfield.value = e.pageX;
+        document.formex3.mouseYfield.value = e.pageY;
+        return true;
+      }
+
+      function keyPressed(e)
+      {
+        key_clicked = String.fromCharCode(e.charCode)
+
+        if(!key_clicked)
+          return false;
+
+        document.formex3.keypressed.value = key_clicked;
+        return true;
+      }
+
+      function mouseClicked(e)
+      {
+         switch(e.which)
+         {
+          case 1: document.formex3.mousebutton.value = "Left"; break;
+
+          case 2: document.formex3.mousebutton.value = "Middle"; break;
+
+          default: document.formex3.mousebutton.value = "Right"; break;
+         }
+         return true;
+      }
+      function showPara()
+      {
+        document.getElementById("first").style.visibility=(document.formex.firstpara.checked) ? "visible" : "hidden";
+
+        document.getElementById("second").style.visibility=(document.formex.secondpara.checked) ? "visible" : "hidden";
+        document.getElementById("second").style.background=("blue")
+
+        document.getElementById("third").style.visibility=(document.formex.thirdpara.checked) ? "visible" : "hidden";
+
+        return true;
+      }
+
+      function shoutPassword()
+      {
+         alert( " your password is \"" + document.formex2.textinput.value + "\"");
+         return true;
+      }
+
+     function changeImage()
+     {
+        $('#image_id').css('width', '75%');
+        return true;
+     }
+
+     function alertme()
+     {
+          // alertmsg = document.image_id.src + "\nHeight: " + document.image_id.width;
+          // alert(alertmsg);
+          return true;
+     }
+
+     function changeColor()
+     {
+          document.getElementById("h3style").style.color = "red"
+          document.getElementById("h3style").firstChild.nodeValue = "Excited"
+          return true;
+     }
+
+     function changeAgain()
+     {
+          document.getElementById("h3style").style.color = "blue"
+          document.getElementById("h3style").firstChild.nodeValue = "Bored"
+          return true;
+     }
+    </script>
+  </body>
+
+  <noscript></noscript>
+</html>
+

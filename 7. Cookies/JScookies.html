@@ -1,0 +1,108 @@
+<html>
+  <head>
+
+    <style>
+      #h3style
+      {
+        color:gray;
+      }
+
+    </style>
+
+ <!-- // <script language="JavaScript" typ="text/javascript" src="/js/jquery-1.2.6.min.js"></script> -->
+
+
+    <script  src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.5.min.js"  />
+
+    <script  src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" />
+    <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
+<!-- <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script> -->
+
+  </head>
+
+  <body>
+    <p>Enter First Name
+      <input type="text" id="firstname" onblur="createCookie('firstname')")>
+    </p>
+
+    <p>Enter Last Name
+      <input type="text" id="lastname" onblur="createCookie('lastname')")>
+    </p>
+
+    <p>Cookie To Delete
+      <input type="text" id="deleteme" onblur="deleteCookie()")>
+    </p>
+
+    <p>Cookie To Get
+      <input type="text" id="getme" onblur="getACookie()")>
+    </p>
+
+    <script>
+      document.write("Every Cookie: " + document.cookie)
+
+
+      function getACookie(name)
+      {
+        var cookieName = document.getElementById("getme").value;
+
+        var allCookies = document.cookie.split(";");
+
+        var cookieData ="";
+
+        for (var i = 0; i < allCookies.length; i++)
+        {
+          if (allCookies[i].indexof(cookieName) != -1)
+          {
+            match = allCookies[i].replace(" ", "");
+            cookieData = match.substr((cookieName.length + 1));
+            alert((CookieName + " " + cookieData));
+          }
+        }
+      }
+
+      function createCookie(newCookie)
+      {
+        var expDate = new Date();
+
+        expDate.setMonth(expDate.getMonth() + 1);
+
+        var cookieVal = document.getElementById(newCookie).value;
+        document.cookie = newCookie + "=" + cookieVal + ";path=/;expires=" + expDate.toGMTString();
+      }
+
+      function getACookie(name)
+      {
+        var cookieName = document.getElementById("getme").value;  // Get the value from the text box called getme
+
+        var allCookies = document.cookie.split(";");   // Splits all of the cookies and puts them in an array
+
+        var cookieData = "";
+
+        for (var i=0; i < allCookies.length; i++)// Cycle through all of the cookies in the array
+        {
+
+          if ((allCookies[i].indexOf(cookieName)) != -1) // Test to see if string contains the cookie name
+          {
+            match = allCookies[i].replace(" ", ""); // Deletes whitespace that may proceed the cookie name
+
+            cookieData = match.substr((cookieName.length + 1)); // Assign the substring that follows the cookie name
+
+            alert(cookieName + " " + cookieData);
+          }
+        }
+      }
+
+      function deleteCookie()
+      {
+        var cookieToDel = document.getElementById("deleteme").value;
+
+        createCookie(cookieToDel,"",-1);      // Creates a cookie with a name value and expiration in days
+      }
+
+    </script>
+
+  </body>
+
+  <noscript></noscript>
+</html>
+

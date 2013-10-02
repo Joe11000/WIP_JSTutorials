@@ -1,0 +1,17 @@
+----------------regex --------------------
+str = "How is 677 life in the big city?"
+
+document.write(str + "<br>");
+
+document.write(str.search(/[^0-9]/)  + "<br>"); // return first index where character is not a number. Should return 0 index of string
+
+str2 = str.replace(/is/, 'iz'); // store result of replacing 'is' with 'iz'
+
+document.write(str2  + "<br>");
+
+
+var words_with_i_in_them = /\S*i\S*/g;
+
+words_with_i_in_them instanceof RegExp; //
+
+document.write("Words with an i in them <br>" + str.match(words_with_i_in_them) + "<br>"); // find every single match of regex
