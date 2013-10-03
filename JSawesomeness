@@ -11,3 +11,29 @@ Intercept event binding calls
 $('img').mouseover(function(){})
 
 *******************************************
+
+
+
+this.on( name, null, data, fn ) :
+        this.trigger( name );
+
+
+
+
+
+(function() {
+  // Bind Hide Scores functions
+  var proxied = $.fn.mouseclick;
+  $.fn.mouseclick = function() {
+  	reHideScores();
+  };
+})();
+
+
+
+this.on( name, null, data, fn ) :
+        this.trigger( name
+
+
+
+jQuery.getScript()
