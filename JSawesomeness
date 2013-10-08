@@ -1,5 +1,16 @@
 Intercept event binding calls
 ******************************************
+** Original    http://api.jquery.com/Types/#Proxy_Pattern
+(function() {
+  // log all calls to setArray
+  var proxied = jQuery.fn.setArray;
+  jQuery.fn.setArray = function() {
+    console.log( this, arguments );
+    return proxied.apply( this, arguments );
+  };
+})();
+
+** Joe example
 (function() {
   // log all calls to setArray
   var proxied = $.fn.mouseover;
@@ -14,25 +25,61 @@ $('img').mouseover(function(){})
 
 
 
-this.on( name, null, data, fn ) :
-        this.trigger( name );
+
+#(function() {
+#  // Bind Hide Scores functions
+#  var proxied = $.fn.click;
+#  $.fn.click = function() {
+# 	reHideScores();
+#  };
+#})();
 
 
 
 
 
+
+var period = 1000; // milliseconds
+var repeat = true;
+var counter = 0;
+
+// STARTS and Resets the loop if any
 (function() {
-  // Bind Hide Scores functions
-  var proxied = $.fn.mouseclick;
-  $.fn.mouseclick = function() {
-  	reHideScores();
-  };
-})();
+  while(repeat)
+  {
+    (function() {
+      reHideScores();
+      console.log(counter)
+    }, period);
+  }
+)();
 
 
+var reHideScores = function()
+{
 
-this.on( name, null, data, fn ) :
-        this.trigger( name
+  // top of the screen scores
+  $('.score').each(function(i)
+  {
+      if(this.innerHTML != "")
+        this.innerHTML = "?";
+  });
+
+  // nhl tonight main scores on middle bottom of page
+  $('[class="highlightgame_cell"][align="right"]').each(function(i)
+  {
+      this.innerHTML = "?"  // DOM element version of $('this')
+  });
+
+  // hide goals table on the right side of screen.
+  $('#highlight_game_goals_tbl').each(function(e){
+    this.style.display = "none";
+  });
+
+  $('#tdDetailsComingSoon #content_Details td[nowrap]')[0].innerHTML = "? - ?"
+}
+
+
 
 
 
